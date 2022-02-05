@@ -13,6 +13,7 @@ namespace MonoBehaviours
         [SerializeField] private int gridSize;
         [SerializeField] private int spread;
         [SerializeField] private Vector2 speedRange = new Vector2(4f, 7f);
+        [SerializeField] private Vector2 lifetimeRange = new Vector2(10f, 60f);
 
         private BlobAssetStore _blob;
 
@@ -31,6 +32,8 @@ namespace MonoBehaviours
                 entityManager.SetComponentData(instance, new Destination { value = position });
                 var speed = Random.Range(speedRange.x, speedRange.y);
                 entityManager.SetComponentData(instance, new MovementSpeed { value = speed });
+                var lifetime = Random.Range(lifetimeRange.x, lifetimeRange.y);
+                entityManager.SetComponentData(instance, new Lifetime { value = lifetime });
             }
         }
 
